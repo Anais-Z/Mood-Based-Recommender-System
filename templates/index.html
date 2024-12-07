@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Flask Project</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+    
+</head>
+<body>
+    <h1>Spotify Mood Recommender</h1>
+    <p>This is a simple Flask web application.</p>
+
+    <button id="fetchDataButton">Fetch API Data</button>
+    <p id="apiMessage"></p>
+
+    <button id="randomButton">Show Random Message</button>
+
+    <h1>Enter Your Current Mood</h1>
+
+    <!-- Text Input for Mood -->
+    <div class="input-container">
+        <input type="text" id="moodInput" placeholder="Enter your current mood?" />
+        <button id="submitButton">Submit</button>
+    </div>
+
+    <p id="moodMessage"> </p>
+
+    <script>
+        document.getElementById('fetchDataButton').addEventListener('click', function() {
+            fetch('/api')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('apiMessage').innerText = data.message;
+                });
+        });
+
+        function getRandomMessage() {
+        const messages = [
+            "Keep up the great work!",
+            "You're doing awesome!",
+            "Flask is amazing!",
+            "JavaScript is fun!",
+            "You are learning fast!"
+        ];
+        const randomIndex = Math.floor(Math.random() * messages.length);
+        return messages[randomIndex];
+    }
+
+    // Event listener for 'Random' button
+    document.getElementById('randomButton').addEventListener('click', function() {
+        console.log('Random Button Clicked');  // Debugging log
+        document.getElementById('apiMessage').innerText = getRandomMessage();
+    });
+
+    // Event listener for submit button
+    document.getElementById('submitButton').addEventListener('click', function() {
+            // Get the value from the text input
+            const mood = document.getElementById('moodInput').value;
+
+            // Display the entered mood in a message
+            if (mood) {
+                document.getElementById('moodMessage').innerText = `Your current mood is: ${mood}`;
+            } else {
+                document.getElementById('moodMessage').innerText = "Please enter a mood!";
+            }
+        });
+    </script>
+</body>
+</html>
