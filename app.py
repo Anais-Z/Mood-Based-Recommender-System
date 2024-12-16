@@ -6,6 +6,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from scipy.sparse.linalg import svds
 import numpy as np
 
+
 app = Flask(__name__)
 
 # Load datasets
