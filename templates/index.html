@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <link rel="stylesheet" href="../static/style.css">
+
     <title>Track Recommendations</title>
 </head>
 <body>
@@ -21,13 +22,16 @@
     </form>
 
     {% if recommendations %}
-    <h2>You are {{ request.form['mood'] }}. Here are some songs.</h2>
+    <h2>You are feeling {{ request.form['mood'] }}. Here are some songs.</h2>
     <ul>
         {% for recommendation in recommendations %}
-            <li style="margin-bottom: 15px;">
-                {{ recommendation['track_name'] }} 
+            <li 
+            class="recommendation-item" 
+            data-track-name="{{ recommendation['track_name'] }}" 
+            data-artists="{{ recommendation['artists'] | join(', ') }}">
+            {{ recommendation['track_name'] }}
                 <div style="margin-top: 10px;">
-                    <strong>- Artists:</strong>
+                    <strong class="track-name"> Artists:</strong>
                     <span style="margin-left: 5px;">
                         {% for artist in recommendation['artists'] %}
                             {{ artist }}{% if not loop.last %}, {% endif %}
@@ -40,6 +44,8 @@
 {% else %}
     <p>No recommendations available.</p>
 {% endif %}
+
+<script src="../static/script.js"></script>
 
 </body>
 </html>

@@ -1,30 +1,16 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Event listener for 'Fetch Data' button
-    document.getElementById('fetchDataButton').addEventListener('click', function() {
-        console.log('Fetch Data Button Clicked');  // Debugging log
-        fetch('/api')
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('apiMessage').innerText = data.message;
-            });
-    });
+// Select all list items
+const recommendationItems = document.querySelectorAll('.recommendation-item');
 
-    // Function to generate a random message
-    function getRandomMessage() {
-        const messages = [
-            "Keep up the great work!",
-            "You're doing awesome!",
-            "Flask is amazing!",
-            "JavaScript is fun!",
-            "You are learning fast!"
-        ];
-        const randomIndex = Math.floor(Math.random() * messages.length);
-        return messages[randomIndex];
-    }
+// Add a click event listener to each item
+recommendationItems.forEach(item => {
+    item.addEventListener('click', () => {
+        const trackName = item.getAttribute('data-track-name');
+        const artists = item.getAttribute('data-artists');
+        
+         // Construct the Spotify search URL
+         const spotifySearchUrl = `https://open.spotify.com/search/${encodeURIComponent(trackName)}`;
 
-    // Event listener for 'Random' button
-    document.getElementById('randomButton').addEventListener('click', function() {
-        console.log('Random Button Clicked');  // Debugging log
-        document.getElementById('apiMessage').innerText = getRandomMessage();
+         // Open the URL in a new tab
+         window.open(spotifySearchUrl, '_blank');
     });
 });

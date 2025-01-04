@@ -3,6 +3,7 @@
 import pandas as pd
 from IPython.display import display
 
+
 track_df = pd.read_csv('track_dataset.csv')
 playlist_df = pd.read_csv('playlist_dataset.csv')
 user_df = pd.read_csv('user_dataset.csv')
@@ -159,7 +160,7 @@ padded_inputs = pad_sequences(
     [np.array(x).tolist() for x in all_inputs],  # Convert each sequence to a list of lists
     maxlen=window_size,  # Fixed window size
     padding='post',  # Pad at the end
-    dtype='float32'
+    #dtype='float32'
 )
 
 # Convert outputs to NumPy array

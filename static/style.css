@@ -2,10 +2,20 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     padding: 50px;
+    margin: 0;
+    background-color: #dafaee;
 }
 
 h1 {
     color: #4CAF50;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    font-family: monospace;
+
+}
+
+form {
+    margin-bottom: 30px;
 }
 
 button {
@@ -14,8 +24,115 @@ button {
     cursor: pointer;
 }
 
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background-color: #ffffff;
+    margin: 10px auto;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    text-align: left;
+    border-style: solid;
+     border-width: 2px;
+}
+
+
+
+li div {
+    margin-top: 8px;
+}
+
+li strong {
+    color: #333;
+}
+
+li span {
+    color: #777;
+}
+
 #apiMessage {
     margin-top: 20px;
     font-size: 18px;
     color: #555;
 }
+
+
+
+.recommendation-item:hover {
+    transform: scale(1.1); 
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); 
+    background-color: #e8f0fe; 
+}
+
+.recommendation-item:hover strong {
+    color: #0073e6; 
+}
+
+
+.recommendation-item:hover span {
+    color: #0073e6; 
+}
+
+
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.recommendation-item {
+    opacity: 0; 
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+
+.recommendation-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+.recommendation-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.recommendation-item:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.recommendation-item:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.recommendation-item:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.recommendation-item:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+.recommendation-item:nth-child(7) {
+    animation-delay: 0.7s;
+}
+
+.recommendation-item:nth-child(8) {
+    animation-delay: 0.8s;
+}
+
+.recommendation-item:nth-child(9) {
+    animation-delay: 0.9s;
+}
+
+.recommendation-item:nth-child(10) {
+    animation-delay: 1.0s;
+}
+
